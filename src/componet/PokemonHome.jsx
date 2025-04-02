@@ -3,7 +3,7 @@ import "./Style/pokemonHome.css"
 import '../assets/font/pokemonFont.css';
 import { Await } from "react-router-dom";
 
-function PokemonHome(){
+function PokemonHome({tipoShiny}){
 
     const [pokemon,setPokemon] = useState([]);
     const [pokemonAPI2, setPokemonAPI2]=useState([]);
@@ -66,8 +66,10 @@ function PokemonHome(){
     }
     
 
-
-    let urlimg = pokemon?.sprites?.other?.dream_world?.front_default || pokemon?.sprites?.other?.['official-artwork']?.front_default;
+    const urlimg = tipoShiny
+    ? pokemon?.sprites?.other?.dream_world?.front_shiny || pokemon?.sprites?.other?.['official-artwork']?.front_shiny
+    : pokemon?.sprites?.other?.dream_world?.front_default || pokemon?.sprites?.other?.['official-artwork']?.front_default;
+    
 
     const entry = pokemonAPI2?.flavor_text_entries?.find(
         (entry) => entry.language.name === "es"

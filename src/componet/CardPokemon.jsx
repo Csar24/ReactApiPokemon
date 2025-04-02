@@ -2,11 +2,11 @@ import React, { useState } from 'react';
 import '../assets/font/pokemonFont.css'
 import { Link } from 'react-router-dom';
 
-function CardPokemon({pokemon}){
+function CardPokemon({pokemon,tipoShiny}){
    
     const [hovered, setHovered] = useState(false); 
     /*? si esta vasio devuelve null o undefine*/
-    let urlimg = pokemon?.sprites?.other?.dream_world?.front_default;
+   
 
     const cardStyle={
         border: '2px solid #ccc',
@@ -24,10 +24,15 @@ function CardPokemon({pokemon}){
 
     }
 
+    const urlimg = tipoShiny
+    ? pokemon?.sprites?.other?.dream_world?.front_shiny || pokemon?.sprites?.other?.['official-artwork']?.front_shiny
+    : pokemon?.sprites?.other?.dream_world?.front_default || pokemon?.sprites?.other?.['official-artwork']?.front_default;
+    
 
+    
 
     return(
-        <Link to={`/PokemonDetalle/${pokemon.name}`} style={cardStyle} onMouseEnter={() => setHovered(true)} onMouseLeave={() => setHovered(false)}>
+        <Link to={`/PokemonDetalle/${pokemon.name}?shiny=${tipoShiny}`} style={cardStyle} onMouseEnter={() => setHovered(true)} onMouseLeave={() => setHovered(false)}>
                        
             <section  style={{backgroundColor:'#fff'}} >
                 <h2 style={{color:'#000' ,fontFamily: 'PokemonHollow' ,letterSpacing: '2px'}} >{pokemon?.name}</h2>  

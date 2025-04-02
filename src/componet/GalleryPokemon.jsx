@@ -2,7 +2,7 @@ import { useEffect, useState } from "react"
 import './Style/galleryPokemon.css'
 import CardPokemon from './CardPokemon'
 
-function GalleryApp(){
+function GalleryApp({tipoShiny}){
      const BASE_URL = 'https://pokeapi.co/api/v2/pokemon/'  
      const [pokemon, setPokemon] = useState([]);
      //Usestate funcion que devuleve dos estados
@@ -56,7 +56,7 @@ function GalleryApp(){
         <section className ="galleryPokemon">
            
             {pokemon.map((pokemon)=>(
-                <CardPokemon  key={pokemon.id} pokemon={pokemon}></CardPokemon>
+                <CardPokemon  key={pokemon.id} pokemon={pokemon} tipoShiny={tipoShiny}></CardPokemon>
               ))}     
          </section>
          <div style={{display:'flex', justifyContent:'center', margin:'20px'}}>

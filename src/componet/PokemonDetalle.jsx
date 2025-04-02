@@ -1,6 +1,6 @@
 
 import PokemonHome from "../componet/PokemonHome";
-import { useParams } from "react-router-dom";
+import { useParams, useSearchParams } from "react-router-dom";
 import { useState, useEffect } from "react";
 import {
     RadarChart,
@@ -19,8 +19,8 @@ function PokemonDetalle(){
     const [tipo,setTipo ]=useState([]);
     const BASE_URL='https://pokeapi.co/api/v2/pokemon/';
     const BASE_URL_API2='https://pokeapi.co/api/v2/pokemon-species/';
-
-    
+    const [searchParams] = useSearchParams();
+    const tipoShiny = searchParams.get("shiny") === "true";
 
     useEffect(()=>{
         window.scrollTo({ top: 0, behavior: 'smooth' });
@@ -69,7 +69,11 @@ function PokemonDetalle(){
 
     },[name])
 
-    let urlimg = pokemon?.sprites?.other?.dream_world?.front_default || pokemon?.sprites?.other?.['official-artwork']?.front_default;
+    const urlimg = tipoShiny
+    ? pokemon?.sprites?.other?.dream_world?.front_shiny || pokemon?.sprites?.other?.['official-artwork']?.front_shiny
+    : pokemon?.sprites?.other?.dream_world?.front_default || pokemon?.sprites?.other?.['official-artwork']?.front_default;
+    
+ 
     const entry = pokemonAPI2?.flavor_text_entries?.find( (entry) => entry.language.name === "es");
     //Stadisticas
 

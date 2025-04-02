@@ -1,16 +1,19 @@
 
-import { Link, useNavigate } from "react-router-dom";
+import { Link,useLocation, useNavigate, useSearchParams } from "react-router-dom";
 import { useEffect, useState } from "react";
 import "./Style/navbar.css";
 
 
 function NavBar(){
-     
+    const location = useLocation();
     const [busqueda,setBusqueda]= useState([]);
     const [listaPokemon, setListaPokemon] = useState([]);
     const navigate = useNavigate();
     const BASE_URL='https://pokeapi.co/api/v2/pokemon?limit=1000';
+    const [searchParams, setSearchParams] = useSearchParams();
 
+    const isShiny = searchParams.get("shiny") === "true";
+    const estaEnDetalle = location.pathname.includes("/PokemonDetalle/");   
 
    useEffect(()=>{
        async function obtenerNombre() {
@@ -61,7 +64,7 @@ function NavBar(){
                 <ul className="contenedorEnlaces">
                     
                         
-                    <li>
+                    <li className="enlaceMenu">
                         <input
                             type="text"
                             placeholder="Buscar Pokémon..."
@@ -75,12 +78,23 @@ function NavBar(){
                             }}
                         />
                     </li>
-                    <li>
-                        <button  className="btnPokemonShiny">
-                            <Link  className="enlaces" to="/PokemonShiny" >Pokemon Shiny</Link>
-                        </button>
-                       
-                    </li>                                      
+                    <li className="enlaceMenu">
+                    <button
+                        className="btnPokemonShiny"
+                        onClick={() => setSearchParams({ shiny: (!isShiny).toString() })}
+                        style={{
+                        opacity: 1,
+                        cursor: "pointer",
+                        backgroundColor: isShiny ? "#000" : "#c39717",
+                        transition: "background-color 0.3s ease",
+                        fontWeight: "bold"
+                        }}
+                    >
+                        {isShiny ? "✨ Ver Normal" : "✨ Ver Shiny"}
+                    </button>
+                    </li>
+
+                                   
                 </ul>
             </nav>
         </div>
