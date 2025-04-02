@@ -1,0 +1,68 @@
+.menuHome{
+  position: sticky; 
+  /* Menu fijo */
+  top: 0;
+  /* Posicion */
+  background-color: white;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 1rem;
+  border-bottom: 1px solid #ccc;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+  /* box-shadow: offset-x offset-y blur-radius spread-radius color; */
+  z-index: 100;
+ 
+
+}
+
+
+.menu {
+     width: 80%;
+     display: flex;
+     align-items: center;
+     justify-content: end; 
+}
+ 
+.iconoHome{
+  transition: transform 0.2s ease-in-out;
+}
+.iconoHome:hover{
+   transform: scale(1.1);
+}
+
+
+
+.contenedorEnlaces{
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    gap: 40px;
+    padding: 0 5%;
+    list-style: none;
+    
+    
+    
+}
+
+.enlaces{
+  color:rgb(255, 255, 255);
+  text-decoration: none;
+  
+}
+.enlaces:hover{
+  color: #ccc;
+}
+
+.input-busqueda{
+  padding: 8px;
+  border-radius: 6px;
+  border: 1px solid ;
+  font-size: 16px;
+  background-color: whitesmoke;
+  color:black;
+}
+
+.btnPokemonShiny{
+  background-color: black;
+}

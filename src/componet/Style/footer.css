@@ -1,0 +1,36 @@
+.menu-footer{
+  position: sticky; 
+  /* Menu fijo */
+  top: 0;
+  /* Posicion */
+  background-color: white;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 1rem;
+  border-bottom: 1px solid #ccc;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+  /* box-shadow: offset-x offset-y blur-radius spread-radius color; */
+  z-index: 100;
+ 
+
+}
+.menu{
+  display: flex;
+   justify-content: center;
+   align-items: center;
+   
+}
+
+.contenedor-enlaces{
+  display: flex;
+  list-style: none;
+  gap: 20px;
+  
+  
+}
+
+.contenedor-enlaces a {
+  color: black;        /* Cambia 'black' por el color que desees */
+  text-decoration: none; /* Quita el subrayado */
+}
